@@ -56,6 +56,14 @@
                 initScrollEffect();
             } catch (e) { console.error("Layout Load Error:", e); }
         }
+        // Function to toggle mobile dropdown visibility
+function toggleMobileMenu() {
+    const menu = document.getElementById('nav-menu');
+    if (menu) {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    }
+}
 
         // 2. Scroll Animation for Nav
         function initScrollEffect() {
