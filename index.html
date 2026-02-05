@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandya Karya Perkasa | Energizing Infrastructure</title> 
+    <title>Nandya Karya Perkasa | Energizing Infrastructure</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -56,20 +58,18 @@
         }
 
         // 2. Scroll Animation for Nav
-function initScrollEffect() {
-    const nav = document.getElementById('main-nav');
-    if (!nav) return; // Guard clause
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.remove('bg-white/30', 'py-4', 'text-white');
-            nav.classList.add('bg-white', 'py-2', 'shadow-md', 'text-[#021624]');
-        } else {
-            nav.classList.remove('bg-white', 'py-2', 'shadow-md', 'text-[#021624]');
-            nav.classList.add('bg-white/30', 'py-4', 'text-white');
+        function initScrollEffect() {
+            const nav = document.getElementById('main-nav');
+            window.onscroll = () => {
+                if (window.scrollY > 50) {
+                    nav.classList.remove('bg-white/30', 'py-4', 'text-white');
+                    nav.classList.add('bg-white/100', 'py-2', 'shadow-md', 'text-[#021624]');
+                } else {
+                    nav.classList.remove('bg-white/100', 'py-2', 'shadow-md', 'text-[#021624]');
+                    nav.classList.add('bg-white/30', 'py-4', 'text-white');
+                }
+            };
         }
-    });
-}
 
         // 3. Hero Slider Loader
         async function setupHero(imageArray) {
