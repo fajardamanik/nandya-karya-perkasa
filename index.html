@@ -18,11 +18,16 @@
             scroll-behavior: smooth; 
             overflow-x: hidden; 
         }
-        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Product Card Animations */
+        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        /* Smooth transition for navbar height */
+        #main-nav { transition: all 0.3s ease-in-out; }
     </style>
 </head>
 <body> 
+
     <div id="navbar-placeholder"></div>
     <div id="hero-placeholder"></div>
 
@@ -37,14 +42,33 @@
         <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="text-center col-span-full py-20 text-gray-400">Loading catalog from Google Sheets...</div>
         </div>
+
+        <div class="mt-16 text-center">
+            <a href="products.html" class="inline-block bg-[#021624] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#0762a3] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                View Full Catalog
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
     </main>
 
     <div id="footer-placeholder"></div>
 
+    <div id="product-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-[#021624]/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl transition-all transform scale-95 opacity-0 duration-300" id="modal-container">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#021624] z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div id="modal-body" class="p-0 flex flex-col md:flex-row"></div>
+        </div>
+    </div>
+
     <script>
         const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRLw0LIqxaV0TABtVV1lnoy_-uG3V9z636NoEtOi4w0JRGZOWBNsQJ9Sn7k8YoKHuLK-KjF8vbRDf0h/pub?output=csv';
 
-        // 1. Component Loader (Nav & Footer)
+        // 1. Layout & Scroll Logic
         async function loadLayout() {
             try {
                 const [navRes, footRes] = await Promise.all([
@@ -56,30 +80,78 @@
                 initScrollEffect();
             } catch (e) { console.error("Layout Load Error:", e); }
         }
-        // Function to toggle mobile dropdown visibility
-function toggleMobileMenu() {
-    const menu = document.getElementById('nav-menu');
-    if (menu) {
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-    }
-}
 
-        // 2. Scroll Animation for Nav
         function initScrollEffect() {
             const nav = document.getElementById('main-nav');
+            if (!nav) return;
+            
+            // Initial Small State adjustment
+            nav.classList.replace('py-4', 'py-1.5'); 
+
             window.onscroll = () => {
                 if (window.scrollY > 50) {
-                    nav.classList.remove('bg-white/30', 'py-4', 'text-white');
-                    nav.classList.add('bg-white/100', 'py-2', 'shadow-md', 'text-[#021624]');
+                    nav.classList.remove('bg-white/30', 'py-1', 'text-white');
+                    nav.classList.add('bg-[#0762a3]/50', 'py-0', 'shadow-md', 'text-white');
                 } else {
-                    nav.classList.remove('bg-white/100', 'py-2', 'shadow-md', 'text-[#021624]');
-                    nav.classList.add('bg-white/30', 'py-4', 'text-white');
+                    nav.classList.remove('bg-[#0762a3]/50', 'py-0', 'shadow-md', 'text-white');
+                    nav.classList.add('bg-white/30', 'py-1', 'text-white');
                 }
             };
         }
 
-        // 3. Hero Slider Loader
+ function toggleMobileMenu(event) {
+    // Prevent the click from bubbling up to the window listener immediately
+    if (event) event.stopPropagation();
+    
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-btn-toggle');
+    
+    if (menu) {
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
+            if(btn) btn.classList.add('text-white');
+        } else {
+            closeMobileMenu();
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-btn-toggle');
+    const isScrolled = window.scrollY > 50;
+
+    if (menu && !menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+
+        // Reset button color logic
+        if (btn) {
+            if (isScrolled) {
+                btn.classList.replace('text-white', 'text-[#021624]');
+            } else {
+                btn.classList.add('text-white');
+            }
+        }
+    }
+}
+
+// Global listener for clicking outside
+window.addEventListener('click', function(e) {
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-btn-toggle');
+
+    // If menu is open and the click was NOT on the menu or the button, close it
+    if (menu && !menu.classList.contains('hidden')) {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            closeMobileMenu();
+        }
+    }
+});
+
+        // 2. Hero Section
         async function setupHero(imageArray) {
             try {
                 const response = await fetch('./hero.html');
@@ -105,31 +177,32 @@ function toggleMobileMenu() {
             } catch (e) { console.error("Hero Load Error:", e); }
         }
 
-        // 4. Product Loader from Google Sheets
+        // 3. Product Logic
         async function loadProducts() {
             const grid = document.getElementById('product-grid');
             try {
                 const response = await fetch(sheetURL);
                 const csvData = await response.text();
-                const lines = csvData.split(/\r?\n/).slice(1); 
+                const lines = csvData.split(/\r?\n/).slice(1, 7); 
+                
                 grid.innerHTML = '';
 
                 lines.forEach(line => {
-                    if(!line.trim()) return;
                     const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
                     if (!columns) return;
                     const data = columns.map(col => col.replace(/^"|"$/g, '').trim());
                     const [name, category, img, voltage, std, features, armor, resistance, eco, smoke] = data;
 
                     grid.innerHTML += `
-                        <div class="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col">
-                            <div class="relative h-64">
+                        <div class="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col h-full shadow-sm"
+                        onclick="openModal('${encodeURIComponent(JSON.stringify(data))}')">
+                            <div class="relative h-56 sm:h-64">
                                 <img src="${img}" alt="${name}" class="w-full h-full object-cover">
                                 <div class="absolute top-4 left-4 bg-[#0762a3] text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">${category}</div>
                             </div>
-                            <div class="p-6 flex-grow">
-                                <h3 class="text-xl font-extrabold text-[#021624] mb-4">${name}</h3>
-                                <div class="border rounded-xl overflow-hidden text-[11px]">
+                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
+                                <h3 class="text-lg sm:text-xl font-extrabold text-[#021624] mb-4 line-clamp-2">${name}</h3>
+                                <div class="border rounded-xl overflow-hidden text-[10px] sm:text-[11px] mt-auto">
                                     ${renderRow("Voltage", voltage)}
                                     ${renderRow("Standards", std)}
                                     ${renderRow("Features", features)}
@@ -141,7 +214,9 @@ function toggleMobileMenu() {
                             </div>
                         </div>`;
                 });
-            } catch (e) { grid.innerHTML = '<p class="text-center py-10">Error loading catalog.</p>'; }
+            } catch (e) { 
+                grid.innerHTML = '<p class="text-center py-10 text-red-500">Error loading catalog.</p>'; 
+            }
         }
 
         function renderRow(label, value) {
@@ -152,7 +227,54 @@ function toggleMobileMenu() {
                     </div>`;
         }
 
-        // 5. RUN ALL
+        // 4. Modal Logic
+        function openModal(encodedData) {
+            const data = JSON.parse(decodeURIComponent(encodedData));
+            const [name, category, img, voltage, std, features, armor] = data;
+            
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+            const body = document.getElementById('modal-body');
+
+            body.innerHTML = `
+                <div class="w-full md:w-1/2 h-64 md:h-auto">
+                    <img src="${img}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-8 w-full md:w-1/2">
+                    <span class="text-[#0762a3] text-xs font-bold uppercase">${category}</span>
+                    <h2 class="text-2xl font-extrabold text-[#021624] mt-2 mb-4">${name}</h2>
+                    <div class="space-y-3 text-sm">
+                        ${renderModalRow("Voltage Range", voltage)}
+                        ${renderModalRow("Compliance", std)}
+                        ${renderModalRow("Armor Type", armor)}
+                        ${renderModalRow("Key Features", features)}
+                    </div>
+                    <button onclick="window.location.href='mailto:info@nandya-karya.co.id?subject=Inquiry: ${name}'" 
+                            class="w-full mt-8 bg-[#0762a3] text-white py-3 rounded-xl font-bold hover:bg-[#054a7a] transition-all">
+                        Request Quote
+                    </button>
+                </div>`;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function renderModalRow(label, value) {
+            if (!value || value === "undefined") return "";
+            return `<div><p class="text-gray-400 font-bold uppercase text-[10px]">${label}</p><p class="text-[#021624] font-medium">${value}</p></div>`;
+        }
+
+        // 5. Execution
         loadLayout();
         loadProducts();
         setupHero([
