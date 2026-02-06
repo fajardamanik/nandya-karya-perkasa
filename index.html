@@ -38,12 +38,31 @@
     <div id="navbar-placeholder"></div>
     <div id="hero-placeholder"></div>
 
-    <main id="products" class="max-w-7xl mx-auto py-20 px-6">
+    <main class="max-w-7xl mx-auto py-20 px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <div>
+                <span class="text-[#0762a3] font-bold uppercase tracking-widest text-sm">Building Connections Since 1993</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#021624] mt-4 mb-6 leading-tight">
+                    Reliable Power for <br>Critical Infrastructure
+                </h2>
+            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    PT. Nandya Karya Perkasa (NKP) has established itself as a cornerstone in Indonesia's electrical manufacturing landscape. With over three decades of excellence, we specialize in high-quality cabling solutions that power industries, cities, and homes.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Our commitment to international standards and local expertise allows us to provide reliable, efficient, and innovative infrastructure components that meet the rigorous demands of the global market.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <section id="products" class="max-w-7xl mx-auto py-20 px-6">
         
-        <div class="flex justify-between items-end mb-12">
+        <div class="text-center max-w-3xl mx-auto mb-16">
             <div>
                 <h2 class="text-3xl font-extrabold text-[#021624]">Our Product Portfolio</h2>
-                <div class="h-1 w-20 bg-[#0762a3] mt-2"></div>
+            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
             </div>
         </div>
 
@@ -74,17 +93,17 @@
                 </svg>
             </a>
         </div>
-    </main>
+    </section>
 
 
-    <section id="movingreen" class="w-full bg-white py-10">
+    <section id="movingreen">
 
     <div class="max-w-7xl mx-auto px-6">
                         <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-3xl font-extrabold text-[#021624]">NKP sustainability #movingreen</h2>
-                <div class="h-1 w-20 bg-[#0762a3] mt-2"></div>
-            </div>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-extrabold text-[#021624]">Committed to #movingreen</h2>
+            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
+            <p class="text-gray-600">Sustainability is at the heart of NKP. We are continuously evolving our production methods to reduce carbon footprints and develop eco-friendly cabling solutions for a greener tomorrow.</p>
         </div>
         <a href="movingreen.html" 
            class="block group relative overflow-hidden rounded-3xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-green-900/10">
@@ -153,7 +172,7 @@
         }
 
         /**
-         * 2. MOBILE MENU & ACCESSIBILITY 0762a3
+         * 2. MOBILE MENU & ACCESSIBILITY
          */
 function toggleMobileMenu(event) {
     if (event) event.stopPropagation();
