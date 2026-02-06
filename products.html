@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandya Karya Perkasa | Energizing Infrastructure</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Base Reset & Typography */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Rethink Sans', sans-serif; 
+            background-color: #f8fafc; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+        }
+
+        /* Navigation Transitions */
+        #main-nav { transition: all 0.3s ease-in-out; }
+        
+        /* Product Cards */
+        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        
+        /* Modal & Scrollbar Styling */
+        .modal-scroll::-webkit-scrollbar { width: 4px; }
+        .modal-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: #0762a3; border-radius: 10px; }
+    </style>
+</head>
+<body> 
+    <div id="navbar-placeholder"></div>
+    <div id="hero-placeholder"></div>
+
+    <main id="products" class="max-w-7xl mx-auto py-20 px-6">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-extrabold text-[#021624]">Our Product Portfolio</h2>
+                <div class="h-1 w-20 bg-[#0762a3] mt-2"></div>
+            </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="text-center col-span-full py-20 text-gray-400">Loading catalog from Google Sheets...</div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRLw0LIqxaV0TABtVV1lnoy_-uG3V9z636NoEtOi4w0JRGZOWBNsQJ9Sn7k8YoKHuLK-KjF8vbRDf0h/pub?output=csv';
+
+        // 1. Component Loader (Nav & Footer)
+        async function loadLayout() {
+            try {
+                const [navRes, footRes] = await Promise.all([
+                    fetch('nav.html'),
+                    fetch('footer.html')
+                ]);
+                document.getElementById('navbar-placeholder').innerHTML = await navRes.text();
+                document.getElementById('footer-placeholder').innerHTML = await footRes.text();
+                initScrollEffect();
+            } catch (e) { console.error("Layout Load Error:", e); }
+        }
+
+        // 2. Scroll Animation for Nav
+function initScrollEffect() {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return; // Guard clause
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.remove('bg-white/30', 'py-4', 'text-white');
+            nav.classList.add('bg-white', 'py-2', 'shadow-md', 'text-[#021624]');
+        } else {
+            nav.classList.remove('bg-white', 'py-2', 'shadow-md', 'text-[#021624]');
+            nav.classList.add('bg-white/30', 'py-4', 'text-white');
+        }
+    });
+}
+
+        // 3. Hero Slider Loader
+        async function setupHero(imageArray) {
+            try {
+                const response = await fetch('./hero.html');
+                const html = await response.text();
+                document.getElementById('hero-placeholder').innerHTML = html;
+
+                const container = document.getElementById('hero-slides-container');
+                container.innerHTML = imageArray.map(img => `
+                    <div class="swiper-slide hero-slide" style="background-image: url('${img.url}')">
+                        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
+                            <span class="uppercase tracking-widest text-sm font-bold opacity-80">${img.tagline}</span>
+                            <h1 class="text-5xl md:text-7xl font-extrabold mt-4 mb-6 leading-tight">${img.title}</h1>
+                            <p class="text-xl opacity-90 max-w-2xl">${img.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                new Swiper(".heroSwiper", {
+                    loop: true,
+                    autoplay: { delay: 5000 },
+                    pagination: { el: ".swiper-pagination", clickable: true },
+                });
+            } catch (e) { console.error("Hero Load Error:", e); }
+        }
+
+        // 4. Product Loader from Google Sheets
+        async function loadProducts() {
+            const grid = document.getElementById('product-grid');
+            try {
+                const response = await fetch(sheetURL);
+                const csvData = await response.text();
+                const lines = csvData.split(/\r?\n/).slice(1); 
+                grid.innerHTML = '';
+
+                lines.forEach(line => {
+                    if(!line.trim()) return;
+                    const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+                    if (!columns) return;
+                    const data = columns.map(col => col.replace(/^"|"$/g, '').trim());
+                    const [name, category, img, voltage, std, features, armor, resistance, eco, smoke] = data;
+
+                    grid.innerHTML += `
+                        <div class="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col">
+                            <div class="relative h-64">
+                                <img src="${img}" alt="${name}" class="w-full h-full object-cover">
+                                <div class="absolute top-4 left-4 bg-[#0762a3] text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">${category}</div>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-extrabold text-[#021624] mb-4">${name}</h3>
+                                <div class="border rounded-xl overflow-hidden text-[11px]">
+                                    ${renderRow("Voltage", voltage)}
+                                    ${renderRow("Standards", std)}
+                                    ${renderRow("Features", features)}
+                                    ${renderRow("Armor", armor)}
+                                    ${renderRow("Resistance", resistance)}
+                                    ${renderRow("Eco", eco)}
+                                    ${renderRow("Smoke", smoke)}
+                                </div>
+                            </div>
+                        </div>`;
+                });
+            } catch (e) { grid.innerHTML = '<p class="text-center py-10">Error loading catalog.</p>'; }
+        }
+
+        function renderRow(label, value) {
+            if (!value || value.trim() === "" || value.toLowerCase() === "undefined") return ""; 
+            return `<div class="flex justify-between p-2 border-b border-gray-50 last:border-0 hover:bg-gray-50">
+                        <span class="font-bold text-gray-400 uppercase">${label}</span>
+                        <span class="text-[#021624] font-semibold text-right pl-4">${value}</span>
+                    </div>`;
+        }
+
+        // 5. RUN ALL
+        loadLayout();
+        loadProducts();
+setupHero([
+    { 
+        url: 'img/hero/products-1.jpg', 
+        title: 'Precision Engineered', 
+        desc: 'Advanced cabling solutions designed for high-voltage industrial environments.', 
+        tagline: 'Technical Excellence' 
+    },
+    { 
+        url: 'img/hero/products-2.jpg', 
+        title: 'Certified Reliability', 
+        desc: 'Every meter of NKP cable is 100% SNI & ISO certified for maximum safety.', 
+        tagline: 'SNI / LMK / ISO 9001' 
+    }
+]);
+    </script>
+</body>
+</html>
