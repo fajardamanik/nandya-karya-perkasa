@@ -153,24 +153,54 @@
         }
 
         /**
-         * 2. MOBILE MENU & ACCESSIBILITY
+         * 2. MOBILE MENU & ACCESSIBILITY 0762a3
          */
-        function toggleMobileMenu(event) {
-            if (event) event.stopPropagation();
-            const menu = document.getElementById('nav-menu');
-            const btn = document.getElementById('mobile-btn-toggle');
-            
-            if (menu) {
-                const isHidden = menu.classList.contains('hidden');
-                if (isHidden) {
-                    menu.classList.remove('hidden');
-                    menu.classList.add('flex');
-                    if(btn) btn.classList.add('text-white');
-                } else {
-                    closeMobileMenu();
-                }
-            }
+function toggleMobileMenu(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById('nav-menu');
+    const btn = document.getElementById('mobile-btn-toggle');
+    const isScrolled = window.scrollY > 50;
+    
+    if (!menu) return;
+
+    const isHidden = menu.classList.contains('hidden');
+    
+    if (isHidden) {
+        // 1. Show the menu
+        menu.classList.remove('hidden');
+        menu.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'shadow-md', 'backdrop-blur-md');
+        
+        // 2. Apply theme based on scroll position
+        if (isScrolled) {
+            menu.classList.add('bg-[#0762a3]/50', 'text-white');
+            menu.classList.remove('bg-white/50', 'text-[#021624]');
+        } else {
+            menu.classList.add('bg-white/50', 'text-[#021624]');
+            menu.classList.remove('bg-[#0762a3]/50', 'text-white');
         }
+
+        // 3. Ensure the toggle button is visible/contrasted
+        if (btn) btn.classList.add('text-white');
+    } else {
+        // 4. Use your existing close function
+        closeMobileMenu();
+    }
+}
+
+// Add this to your scroll listener to update menu color dynamically if it's open
+window.addEventListener('scroll', () => {
+    const menu = document.getElementById('nav-menu');
+    if (menu && !menu.classList.contains('hidden')) {
+        const isScrolled = window.scrollY > 50;
+        if (isScrolled) {
+            menu.classList.replace('bg-white/50', 'bg-[#0762a3]/70');
+            menu.classList.replace('text-[#021624]', 'text-white', 'shadow-md', 'text-white', 'backdrop-blur-md');
+        } else {
+            menu.classList.replace('bg-[#0762a3]/50', 'bg-white/70', 'shadow-md', 'text-white', 'backdrop-blur-md');
+            menu.classList.replace('text-white', 'text-[#021624]');
+        }
+    }
+});
 
         function closeMobileMenu() {
             const menu = document.getElementById('nav-menu');
