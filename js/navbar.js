@@ -44,6 +44,3 @@ btn.addEventListener('click', () => {
 
 
 
-menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => menu.classList.add('hidden'));
-});
