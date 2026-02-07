@@ -3,440 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nandya Karya Perkasa | Energizing Infrastructure</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <title>PT. Nandya Karya Perkasa | Automotive Manufacturing Excellence</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <style>
-        /* Base Reset & Typography */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Rethink Sans', sans-serif; 
-            background-color: #f8fafc; 
-            scroll-behavior: smooth; 
-            overflow-x: hidden; 
-        }
-
-        /* Navigation Transitions */
-        #main-nav { transition: all 0.3s ease-in-out; }
-        
-        /* Product Cards */
-        .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        
-        /* Modal & Scrollbar Styling */
-        .modal-scroll::-webkit-scrollbar { width: 4px; }
-        .modal-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
-        .modal-scroll::-webkit-scrollbar-thumb { background: #0762a3; border-radius: 10px; }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body> 
+<body class="bg-gray-50 text-gray-900 font-sans">
+<script src="js/navbar.js"></script>
 
-    <div id="navbar-placeholder"></div>
-    <div id="hero-placeholder"></div>
 
-    <main class="max-w-7xl mx-auto py-20 px-6">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <div>
-                <span class="text-[#0762a3] font-bold uppercase tracking-widest text-sm">Building Connections Since 1993</span>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-[#021624] mt-4 mb-6 leading-tight">
-                    Reliable Power for <br>Critical Infrastructure
-                </h2>
-            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
-                <p class="text-gray-600 leading-relaxed mb-6">
-                    PT. Nandya Karya Perkasa (NKP) has established itself as a cornerstone in Indonesia's electrical manufacturing landscape. With over three decades of excellence, we specialize in high-quality cabling solutions that power industries, cities, and homes.
-                </p>
-                <p class="text-gray-600 leading-relaxed">
-                    Our commitment to international standards and local expertise allows us to provide reliable, efficient, and innovative infrastructure components that meet the rigorous demands of the global market.
-                </p>
-            </div>
-        </div>
 
-    </main>
-
-    <section id="products" class="max-w-7xl mx-auto py-20 px-6">
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <img src="img/hero/index-1.jpg" class="absolute w-full h-full object-cover" alt="Manufacturing Floor">
+        <div class="absolute inset-0 bg-black/50"></div>
         
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <div>
-                <h2 class="text-3xl font-extrabold text-[#021624]">Our Product Portfolio</h2>
-            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <span class="uppercase tracking-[0.3em] text-sm mb-4 block text-red-500 font-bold">IATF 16949 : 2016 Certified</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Precision Metal <br><span class="text-red-500">Stamping & Welding</span></h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-200">
+                Supplying world-class automotive components for over 30 years. Quality, consistency, and innovation in every part.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="facilities.html"/><button class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-bold transition transform hover:scale-105">View Capabilities</button>
+                <a href="about.html"/><button class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded-lg font-bold transition">Corporate Profile</button>
             </div>
-        </div>
-
-        <div class="mb-10 max-w-md">
-            <div class="relative group">
-                <input type="text" id="product-search" onkeyup="filterProducts()" 
-                       placeholder="Search products (e.g., NYY, Low Voltage...)" 
-                       class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#0762a3] focus:ring-2 focus:ring-[#0762a3]/20 outline-none transition-all shadow-sm">
-                <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#0762a3]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="text-center col-span-full py-20 text-gray-400 italic">
-                Gathering technical specifications...
-            </div>
-        </div>
-
-        <div class="mt-16 text-center">
-            <a href="products.html" class="inline-block bg-[#021624] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#0762a3] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                View Full Catalog
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
         </div>
     </section>
 
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center text-gray-500 uppercase tracking-widest text-sm mb-8">Trusted by Global Automotive Leaders</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition duration-500">
+                <div class="text-xl font-bold italic text-gray-400 font-serif underline decoration-red-500">LOGO 1</div>
+                <div class="text-xl font-bold italic text-gray-400 font-serif underline decoration-red-500">LOGO 2</div>
+                <div class="text-xl font-bold italic text-gray-400 font-serif underline decoration-red-500">LOGO 3</div>
+                <div class="text-xl font-bold italic text-gray-400 font-serif underline decoration-red-500">LOGO 4</div>
+            </div>
+        </div>
+    </section>
 
-    <section id="movingreen">
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-6 text-blue-900 font-serif">A Legacy of Quality in Every Component</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                    PT. Nandya Karya Perkasa is a professional supplier of automotive spare parts in Indonesia. We operate as a fully-functional manufacturing center designed to meet the rigorous demands of the global automotive supply chain.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-600 text-3xl">30+</h4>
+                        <p class="text-sm text-gray-500 uppercase">Years Experience</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-red-600 text-3xl">2</h4>
+                        <p class="text-sm text-gray-500 uppercase">Strategic Plants</p>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl">
+                 <img src="img/AI+Plant+Image.jpg" alt="Facilities">
+            </div>
+        </div>
+    </section>
 
+    <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-                        <div class="flex justify-between items-end mb-12">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl font-extrabold text-[#021624]">Committed to #movingreen</h2>
-            <div class="h-1 w-20 bg-[#0762a3] mx-auto mt-2 mb-6"></div>
-            <p class="text-gray-600">Sustainability is at the heart of NKP. We are continuously evolving our production methods to reduce carbon footprints and develop eco-friendly cabling solutions for a greener tomorrow.</p>
+        <div class="text-center mb-16">
+            <h2 class="text-sm font-bold text-red-600 uppercase tracking-[0.2em] mb-3">Our Core Expertise</h2>
+            <p class="text-4xl md:text-5xl font-bold text-blue-900 font-serif">Advanced Manufacturing Solutions</p>
+            <div class="w-20 h-1 bg-red-600 mx-auto mt-6"></div>
         </div>
-        <a href="movingreen.html" 
-           class="block group relative overflow-hidden rounded-3xl shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-green-900/10">
-            
-            <div class="relative aspect-[21/9] md:aspect-[25/8] overflow-hidden">
-                <img src="img/movingreen-banner.webp" 
-                     alt="MovinGreen Initiative" 
-                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                
-                <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="group p-8 border border-gray-100 rounded-2xl bg-gray-50 hover:bg-blue-900 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
+                    <i class="fa-solid fa-gears text-2xl text-blue-900 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-white">Metal Stamping</h3>
+                <p class="text-gray-600 group-hover:text-gray-300 mb-6">
+                    Equipped with high-precision press machines ranging from small to large tonnage to handle complex automotive geometries.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-500 group-hover:text-gray-200">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> High-Speed Precision Press</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Progressive Die Capabilities</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Multi-Material Processing</li>
+                </ul>
             </div>
 
-            <span class="sr-only">Learn more about our Green Energy Initiative</span>
-        </a>
-    </div>
-    </section>
+            <div class="group p-8 border border-gray-100 rounded-2xl bg-gray-50 hover:bg-blue-900 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
+                    <i class="fa-solid fa-robot text-2xl text-blue-900 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-white">Welding & Assembly</h3>
+                <p class="text-gray-600 group-hover:text-gray-300 mb-6">
+                    Utilizing robotic and manual welding technologies to ensure structural integrity and consistent quality standards.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-500 group-hover:text-gray-200">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Robotic CO2 / Spot Welding</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Component Sub-Assembly</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Rigorous Load Testing</li>
+                </ul>
+            </div>
 
-    <div id="footer-placeholder"></div>
-
-    <div id="product-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-[#021624]/80 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="relative bg-white w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl transition-all transform scale-95 opacity-0 duration-300" id="modal-container">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#021624] z-10 transition-colors">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div id="modal-body" class="p-0 flex flex-col md:flex-row"></div>
+            <div class="group p-8 border border-gray-100 rounded-2xl bg-gray-50 hover:bg-blue-900 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
+                    <i class="fa-solid fa-compass-drafting text-2xl text-blue-900 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 group-hover:text-white">Tooling & Design</h3>
+                <p class="text-gray-600 group-hover:text-gray-300 mb-6">
+                    In-house mold and die maintenance and development to ensure minimal downtime and custom part accuracy.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-500 group-hover:text-gray-200">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Die Design & Engineering</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Preventive Maintenance</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-red-500 mr-2"></i> Rapid Prototyping</li>
+                </ul>
+            </div>
         </div>
     </div>
+</section>
 
-    <script>
-        const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRLw0LIqxaV0TABtVV1lnoy_-uG3V9z636NoEtOi4w0JRGZOWBNsQJ9Sn7k8YoKHuLK-KjF8vbRDf0h/pub?output=csv';
-        let allProducts = [];
+<section class="py-24 bg-gray-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="max-w-2xl">
+                <h2 class="text-sm font-bold text-red-500 uppercase tracking-[0.2em] mb-3">Our Footprint</h2>
+                <p class="text-4xl md:text-5xl font-bold font-serif">Strategic Manufacturing Facilities</p>
+            </div>
+            <p class="text-gray-400 max-w-sm">
+                Spanning across two major industrial hubs in Indonesia to provide seamless logistics and high-volume production.
+            </p>
+        </div>
 
-        /**
-         * 1. CORE LAYOUT & NAVIGATION LOGIC
-         */
-        async function loadLayout() {
-            try {
-                const [navRes, footRes] = await Promise.all([
-                    fetch('nav.html'),
-                    fetch('footer.html')
-                ]);
-                document.getElementById('navbar-placeholder').innerHTML = await navRes.text();
-                document.getElementById('footer-placeholder').innerHTML = await footRes.text();
-                initScrollEffect();
-            } catch (e) { console.error("Layout Load Error:", e); }
-        }
-
-        function initScrollEffect() {
-            const nav = document.getElementById('main-nav');
-            if (!nav) return;
-            
-            nav.classList.replace('py-4', 'py-1'); 
-
-            window.onscroll = () => {
-                if (window.scrollY > 50) {
-                    nav.classList.remove('bg-white/30', 'py-1', 'text-white');
-                    nav.classList.add('bg-[#0762a3]/50', 'py-0', 'shadow-md', 'text-white', 'backdrop-blur-md');
-                } else {
-                    nav.classList.remove('bg-[#0762a3]/50', 'py-0', 'shadow-md', 'text-white', 'backdrop-blur-md');
-                    nav.classList.add('bg-white/30', 'py-1', 'text-white');
-                }
-            };
-        }
-
-        /**
-         * 2. MOBILE MENU & ACCESSIBILITY
-         */
-function toggleMobileMenu(event) {
-    if (event) event.stopPropagation();
-    const menu = document.getElementById('nav-menu');
-    const btn = document.getElementById('mobile-btn-toggle');
-    const isScrolled = window.scrollY > 50;
-    
-    if (!menu) return;
-
-    const isHidden = menu.classList.contains('hidden');
-    
-    if (isHidden) {
-        // 1. Show the menu
-        menu.classList.remove('hidden');
-        menu.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'shadow-md', 'backdrop-blur-md');
-        
-        // 2. Apply theme based on scroll position
-        if (isScrolled) {
-            menu.classList.add('bg-[#0762a3]/50', 'text-white');
-            menu.classList.remove('bg-white/50', 'text-[#021624]');
-        } else {
-            menu.classList.add('bg-white/50', 'text-[#021624]');
-            menu.classList.remove('bg-[#0762a3]/50', 'text-white');
-        }
-
-        // 3. Ensure the toggle button is visible/contrasted
-        if (btn) btn.classList.add('text-white');
-    } else {
-        // 4. Use your existing close function
-        closeMobileMenu();
-    }
-}
-
-// Add this to your scroll listener to update menu color dynamically if it's open
-window.addEventListener('scroll', () => {
-    const menu = document.getElementById('nav-menu');
-    if (menu && !menu.classList.contains('hidden')) {
-        const isScrolled = window.scrollY > 50;
-        if (isScrolled) {
-            menu.classList.replace('bg-white/50', 'bg-[#0762a3]/70');
-            menu.classList.replace('text-[#021624]', 'text-white', 'shadow-md', 'text-white', 'backdrop-blur-md');
-        } else {
-            menu.classList.replace('bg-[#0762a3]/50', 'bg-white/70', 'shadow-md', 'text-white', 'backdrop-blur-md');
-            menu.classList.replace('text-white', 'text-[#021624]');
-        }
-    }
-});
-
-        function closeMobileMenu() {
-            const menu = document.getElementById('nav-menu');
-            const btn = document.getElementById('mobile-btn-toggle');
-            const isScrolled = window.scrollY > 50;
-
-            if (menu && !menu.classList.contains('hidden')) {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-
-                if (btn) {
-                    if (isScrolled) {
-                        btn.classList.replace('text-white', 'text-[#021624]');
-                    } else {
-                        btn.classList.add('text-white');
-                    }
-                }
-            }
-        }
-
-        // Global Listeners for closing UI elements
-        window.addEventListener('click', function(e) {
-            const menu = document.getElementById('nav-menu');
-            const btn = document.getElementById('mobile-btn-toggle');
-            if (menu && !menu.classList.contains('hidden')) {
-                if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                    closeMobileMenu();
-                }
-            }
-        });
-
-        window.addEventListener('keydown', function(event) {
-            const modal = document.getElementById('product-modal');
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
-
-        /**
-         * 3. HERO SLIDER SYSTEM
-         */
-        async function setupHero(imageArray) {
-            try {
-                const response = await fetch('./hero.html');
-                const html = await response.text();
-                document.getElementById('hero-placeholder').innerHTML = html;
-
-                const container = document.getElementById('hero-slides-container');
-                container.innerHTML = imageArray.map(img => `
-                    <div class="swiper-slide hero-slide" style="background-image: url('${img.url}')">
-                        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full text-white">
-                            <span class="uppercase tracking-widest text-sm font-bold opacity-80">${img.tagline}</span>
-                            <h1 class="text-5xl md:text-7xl font-extrabold mt-4 mb-6 leading-tight">${img.title}</h1>
-                            <p class="text-xl opacity-90 max-w-2xl">${img.desc}</p>
-                        </div>
-                    </div>
-                `).join('');
-
-                new Swiper(".heroSwiper", {
-                    loop: true,
-                    autoplay: { delay: 5000 },
-                    pagination: { el: ".swiper-pagination", clickable: true },
-                });
-            } catch (e) { console.error("Hero Load Error:", e); }
-        }
-
-        /**
-         * 4. PRODUCT DATA & SEARCH LOGIC
-         */
-        async function loadProducts() {
-            const grid = document.getElementById('product-grid');
-            try {
-                const response = await fetch(sheetURL);
-                const csvData = await response.text();
-                const lines = csvData.split(/\r?\n/).slice(1);
-                
-                allProducts = lines.map(line => {
-                    const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-                    return columns ? columns.map(col => col.replace(/^"|"$/g, '').trim()) : null;
-                }).filter(item => item !== null);
-
-                displayProducts(allProducts.slice(0, 6));
-            } catch (e) { 
-                grid.innerHTML = '<p class="text-center py-10 text-red-500">Error loading catalog.</p>'; 
-            }
-        }
-
-        function displayProducts(products, searchTerm = '') {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-
-            if (products.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-full text-center py-20 bg-white rounded-2xl border-2 border-dashed border-gray-100">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-50 rounded-full mb-4">
-                            <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </div>
-                        <p class="text-[#021624] text-xl font-bold">No results for "${searchTerm}"</p>
-                        <p class="text-gray-400 mt-2 mb-6">We couldn't find any products matching your specific keywords.</p>
-                        <a href="mailto:info@nandya-karya.co.id?subject=Special Inquiry: ${searchTerm}" 
-                           class="inline-block bg-[#0762a3] text-white px-8 py-3 rounded-xl font-bold hover:bg-[#054a7a] transition-all">
-                            Request Custom Specification
-                        </a>
-                    </div>`;
-                return;
-            }
-
-            products.forEach(data => {
-                const [name, cat, img, volt, std] = data;
-                grid.innerHTML += `
-                    <div class="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col h-full shadow-sm"
-                         onclick="openModal('${encodeURIComponent(JSON.stringify(data))}')">
-                        <div class="relative h-56 sm:h-64">
-                            <img src="${img}" alt="${name}" class="w-full h-full object-cover">
-                            <div class="absolute top-4 left-4 bg-[#0762a3] text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider">${cat}</div>
-                        </div>
-                        <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                            <h3 class="text-lg sm:text-xl font-extrabold text-[#021624] mb-4 line-clamp-2">${name}</h3>
-                            <div class="border rounded-xl overflow-hidden text-[10px] sm:text-[11px] mt-auto">
-                                ${renderRow("Voltage", volt)}
-                                ${renderRow("Standards", std)}
-                                <div class="p-2 text-center bg-gray-50 text-[#0762a3] font-bold border-t border-gray-100">+ View More</div>
-                            </div>
-                        </div>
-                    </div>`;
-            });
-        }
-
-        function filterProducts() {
-            const searchTerm = document.getElementById('product-search').value.toLowerCase();
-            const searchWords = searchTerm.split(' ').filter(word => word.length > 0);
-
-            const filtered = allProducts.filter(productArray => {
-                const fullTextContent = productArray.join(' ').toLowerCase();
-                return searchWords.every(word => fullTextContent.includes(word));
-            });
-
-            displayProducts(filtered, searchTerm);
-        }
-
-        function renderRow(label, value) {
-            if (!value || value.trim() === "" || value.toLowerCase() === "undefined") return ""; 
-            return `<div class="flex justify-between p-2 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors">
-                        <span class="font-bold text-gray-400 uppercase">${label}</span>
-                        <span class="text-[#021624] font-semibold text-right pl-4">${value}</span>
-                    </div>`;
-        }
-
-        /**
-         * 5. MODAL INTERACTION SYSTEM
-         */
-        function openModal(encodedData) {
-            const data = JSON.parse(decodeURIComponent(encodedData));
-            const [name, category, img, voltage, std, features, armor, resistance, eco, smoke] = data;
-
-            const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
-            const body = document.getElementById('modal-body');
-
-            body.innerHTML = `
-                <div class="w-full md:w-1/2 h-64 md:h-auto">
-                    <img src="${img}" class="w-full h-full object-cover">
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="relative group cursor-pointer">
+                <div class="overflow-hidden rounded-2xl aspect-video mb-6">
+                    <img src="img/AI+Cileungsi+Plant+Exterior_800x540.jpg" 
+                         alt="Cileungsi Plant" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                 </div>
-                <div class="p-8 w-full md:w-1/2 overflow-y-auto max-h-[80vh] modal-scroll">
-                    <span class="text-[#0762a3] text-xs font-bold uppercase tracking-wider">${category}</span>
-                    <h2 class="text-2xl font-extrabold text-[#021624] mt-2 mb-6 leading-tight">${name}</h2>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Cileungsi Plant</h3>
+                        <p class="text-gray-400 flex items-center">
+                            <i class="fa-solid fa-location-dot text-red-500 mr-2"></i> Bogor, West Java
+                        </p>
+                    </div>
+                    <span class="bg-white/10 px-4 py-1 rounded-full text-xs font-mono">Headquarters</span>
+                </div>
+                <hr class="my-6 border-gray-800">
+                <div class="grid grid-cols-2 gap-4 text-sm text-gray-400">
+                    <div class="flex items-center"><i class="fa-solid fa-industry mr-2 text-red-500"></i> Main Stamping Line</div>
+                    <div class="flex items-center"><i class="fa-solid fa-microchip mr-2 text-red-500"></i> Quality Lab</div>
+                </div>
+            </div>
+
+            <div class="relative group cursor-pointer">
+                <div class="overflow-hidden rounded-2xl aspect-video mb-6">
+                    <img src="img/AI+Tegal+Plant+Interior_800x450.jpg" 
+                         alt="Tegal Plant" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Tegal Plant</h3>
+                        <p class="text-gray-400 flex items-center">
+                            <i class="fa-solid fa-location-dot text-red-500 mr-2"></i> Tegal, Central Java
+                        </p>
+                    </div>
+                    <span class="bg-white/10 px-4 py-1 rounded-full text-xs font-mono">Branch Office</span>
+                </div>
+                <hr class="my-6 border-gray-800">
+                <div class="grid grid-cols-2 gap-4 text-sm text-gray-400">
+                    <div class="flex items-center"><i class="fa-solid fa-truck-fast mr-2 text-red-500"></i> Regional Logistics</div>
+                    <div class="flex items-center"><i class="fa-solid fa-screwdriver-wrench mr-2 text-red-500"></i> Assembly & Packing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="py-24 bg-white w-full" id="contact">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                        <div class="w-full bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
+                <h4 class="text-2xl font-bold mb-6 text-blue-900">Request a Quote (RFQ)</h4>
+                <form action="https://formspree.io/f/your-id" method="POST" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-500 outline-none transition" required>
+                        <input type="text" name="company" placeholder="Company Name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-500 outline-none transition" required>
+                    </div>
+                    <input type="email" name="email" placeholder="Work Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-500 outline-none transition" required>
+                    <select name="service" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-500 outline-none transition bg-white text-gray-500">
+                        <option value="">Select Service</option>
+                        <option value="stamping">Metal Stamping</option>
+                        <option value="welding">Welding & Assembly</option>
+                        <option value="tooling">Tooling/Die Development</option>
+                    </select>
+                    <textarea name="message" rows="4" placeholder="Briefly describe your requirements" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-red-500 outline-none transition" required></textarea>
                     
-                    <div class="space-y-4">
-                        ${renderModalRow("Voltage Range", voltage)}
-                        ${renderModalRow("Compliance", std)}
-                        ${renderModalRow("Key Features", features)}
-                        ${renderModalRow("Armor Type", armor)}
-                        ${renderModalRow("Resistance", resistance)}
-                        ${renderModalRow("Eco Friendly", eco)}
-                        ${renderModalRow("Smoke Density", smoke)}
+                    <button type="submit" class="w-full bg-blue-900 hover:bg-red-600 text-white font-bold py-4 rounded-lg transition duration-300 shadow-lg">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+            <div class="w-full">
+                <h2 class="text-sm font-bold text-red-600 uppercase tracking-[0.2em] mb-3">Get In Touch</h2>
+                <h3 class="text-4xl font-bold text-blue-900 mb-8">Ready to start your next project?</h3>
+                
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 shrink-0">
+                            <i class="fa-solid fa-building text-blue-900"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Cileungsi Headquarters</h4>
+                            <p class="text-gray-600">Jl. Raya Narogong Km. 16,5, Cileungsi, Bogor, West Java</p>
+                            <a href="#" class="text-red-600 text-sm font-bold hover:underline">View on Google Maps →</a>
+                        </div>
                     </div>
 
-                    <button onclick="window.location.href='mailto:info@nandya-karya.co.id?subject=Inquiry: ${name}'" 
-                            class="w-full mt-10 bg-[#0762a3] text-white py-4 rounded-xl font-bold hover:bg-[#054a7a] transition-all shadow-lg hover:shadow-blue-900/20">
-                        Request Quote
-                    </button>
-                </div>`;
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 shrink-0">
+                            <i class="fa-solid fa-industry text-blue-900"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Tegal Plant</h4>
+                            <p class="text-gray-600">Jl. Raya Pantura, Tegal, Central Java</p>
+                            <a href="#" class="text-red-600 text-sm font-bold hover:underline">View on Google Maps →</a>
+                        </div>
+                    </div>
 
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                container.classList.remove('scale-95', 'opacity-0');
-                container.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
+                    <div class="flex items-start">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mr-4 shrink-0">
+                            <i class="fa-solid fa-envelope text-blue-900"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">Email & Phone</h4>
+                            <p class="text-gray-600">info@nandya-karya-perkasa.com</p>
+                            <p class="text-gray-600">+62 (21) 823-XXXX</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
 
-        function closeModal() {
-            const modal = document.getElementById('product-modal');
-            const container = document.getElementById('modal-container');
-            container.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
 
-        function renderModalRow(label, value) {
-            if (!value || value === "undefined" || value === "" || value === "-") return ""; 
-            return `
-                <div class="border-l-2 border-[#0762a3] pl-3">
-                    <p class="text-gray-400 font-bold uppercase text-[9px] tracking-widest">${label}</p>
-                    <p class="text-[#021624] font-medium text-sm mt-0.5">${value}</p>
-                </div>`;
-        }
 
-        /**
-         * INITIALIZATION
-         */
-        loadLayout();
-        loadProducts();
-        setupHero([
-            { url: 'img/hero/index1.jpg', title: 'Energizing Your Journey', desc: 'High-performance industrial cabling solutions.', tagline: 'Leader in Indonesia' },
-            { url: 'img/hero/index2.jpg', title: 'Global Export Quality', desc: 'Serving international infrastructure since 1993.', tagline: 'International Standards' }
-        ]);
-    </script>
+
+
+<script src="js/footer.js"></script>
 </body>
 </html>
