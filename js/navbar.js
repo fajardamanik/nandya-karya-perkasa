@@ -59,3 +59,63 @@ menu.querySelectorAll('a').forEach(link => {
         menu.classList.replace('opacity-100', 'opacity-0');
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ... (keep your existing navbarHTML and injection code here) ...
+
+const btn = document.getElementById('mobile-menu-button');
+const menu = document.getElementById('mobile-menu');
+const icon = document.getElementById('menu-icon');
+
+// Helper function to close the menu
+const closeMenu = () => {
+    menu.classList.replace('max-h-96', 'max-h-0');
+    menu.classList.replace('opacity-100', 'opacity-0');
+    icon.classList.remove('rotate-90');
+};
+
+// Helper function to open the menu
+const openMenu = () => {
+    menu.classList.replace('max-h-0', 'max-h-96');
+    menu.classList.replace('opacity-0', 'opacity-100');
+    icon.classList.add('rotate-90');
+};
+
+// Toggle logic for the button
+btn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevents the window click listener from firing immediately
+    const isOpen = menu.classList.contains('max-h-96');
+    isOpen ? closeMenu() : openMenu();
+});
+
+// 1. Close when clicking outside
+window.addEventListener('click', (e) => {
+    // If the menu is open AND the click was NOT inside the menu or on the button
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        closeMenu();
+    }
+});
+
+// 2. Close when pressing Escape key
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeMenu();
+    }
+});
+
+// 3. Close when clicking a link
+menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
