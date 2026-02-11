@@ -73,3 +73,26 @@ window.addEventListener('keydown', (e) => {
 menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
 });
+
+// 4. Highlight Active Page
+const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+const allLinks = document.querySelectorAll('nav a');
+
+allLinks.forEach(link => {
+    const linkPath = link.getAttribute('href');
+    
+    if (linkPath === currentPath) {
+        // Remove default colors first
+        link.classList.remove('text-blue-900', 'hover:text-red-600');
+        
+        // Add yellow highlight classes
+        link.classList.add('text-yellow-500', 'font-bold');
+        
+        // Optional: If it's the "Contact Us" button, you might want a yellow background instead
+        if (link.classList.contains('bg-blue-900')) {
+            link.classList.replace('bg-blue-900', 'bg-yellow-500');
+            link.classList.replace('text-white', 'text-black');
+        }
+    }
+});
