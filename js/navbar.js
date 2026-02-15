@@ -18,7 +18,7 @@ const navbarHTML = `
             <a href="about.html" class="hover:text-red-600 transition">About</a>
             <a href="product.html" class="hover:text-red-600 transition">Product</a>
             <a href="facilities.html" class="hover:text-red-600 transition">Facilities</a>
-            <a href="contact.html" class="bg-blue-900 text-white px-5 py-2 rounded-md hover:bg-blue-800 transition">Contact Us</a>
+            <a href="contact.html" class="hover:text-red-600 transition">Contact Us</a>
         </div>
     </div>
 
@@ -28,7 +28,7 @@ const navbarHTML = `
             <a href="about.html" class="hover:text-red-600 transition">About</a>
             <a href="product.html" class="hover:text-red-600 transition">Product</a>
             <a href="facilities.html" class="hover:text-red-600 transition">Facilities</a>
-            <a href="contact.html" class="text-blue-900 font-bold">Contact Us</a>
+            <a href="contact.html" class="thover:text-red-600 transition">Contact Us</a>
         </div>
     </div>
 </nav>`;
