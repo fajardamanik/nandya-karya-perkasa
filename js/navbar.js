@@ -27,26 +27,39 @@ const navbarHTML = `
             <a href="product.html" class="nav-link transition-colors hover:text-red-600" data-i18n="nav_product">Product</a>
             <a href="facilities.html" class="nav-link transition-colors hover:text-red-600" data-i18n="nav_facilities">Facilities</a>
             <a href="contact.html" class="nav-link transition-colors hover:text-red-600" data-i18n="nav_contact">Contact Us</a>
-            
-<div id="lang-container" class="flex items-center gap-2">
-    <button data-lang="id" class="lang-btn rounded-[2rem] py-1 text-sm border-0 text-blue-900 transition-all duration-200 flex items-center gap-2">
-        <span>ID</span>
-        <svg class="lang-flag hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <g clip-path="url(#clip_id)"><path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" fill="#F0F0F0"></path><path d="M0 8.00003C0 3.58175 3.58175 0 8 0C12.4183 0 16 3.58175 16 8.00003" fill="#D80027"></path></g>
-            <defs><clipPath id="clip_id"><rect width="16" height="16" fill="white"></rect></clipPath></defs>
-        </svg>
-    </button>
 
-    <button data-lang="en" class="lang-btn active-lang rounded-[2rem] py-1 text-sm border border-blue-900 text-blue-900 transition-all duration-200 flex items-center gap-2 pl-3 pr-2 md:pr-3 md:pl-4">
-        <span class="font-bold">EN</span>
-        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <mask id="mask_circle" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16"><circle cx="8" cy="8" r="8" fill="white" /></mask>
-            <g mask="url(#mask_circle)">
-                <path d="M0 0H16V16H0V0Z" fill="#00247D" /><path d="M16 0L0 16M0 0L16 16" stroke="white" stroke-width="2" /><path d="M16 0L0 16M0 0L16 16" stroke="#CF142B" stroke-width="1.2" /><path d="M8 0V16M0 8H16" stroke="white" stroke-width="3" /><path d="M8 0V16M0 8H16" stroke="#CF142B" stroke-width="2" />
-            </g>
-        </svg>
-    </button>
-</div>
+            <div id="lang-container" class="flex items-center gap-2">
+                <button data-lang="id" class="lang-btn rounded-[2rem] py-1 text-sm border-0 text-blue-900 transition-all duration-200 flex items-center gap-2">
+                    <span>ID</span>
+                    <svg class="lang-flag hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <g clip-path="url(#clip_id)">
+                            <path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" fill="#F0F0F0"></path>
+                            <path d="M0 8.00003C0 3.58175 3.58175 0 8 0C12.4183 0 16 3.58175 16 8.00003" fill="#D80027"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip_id">
+                                <rect width="16" height="16" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+
+                <button data-lang="en" class="lang-btn active-lang rounded-[2rem] py-1 text-sm border border-blue-900 text-blue-900 transition-all duration-200 flex items-center gap-2 pl-3 pr-2 md:pr-3 md:pl-4">
+                    <span class="font-bold">EN</span>
+                    <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <mask id="mask_circle" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+                            <circle cx="8" cy="8" r="8" fill="white" />
+                        </mask>
+                        <g mask="url(#mask_circle)">
+                            <path d="M0 0H16V16H0V0Z" fill="#00247D" />
+                            <path d="M16 0L0 16M0 0L16 16" stroke="white" stroke-width="2" />
+                            <path d="M16 0L0 16M0 0L16 16" stroke="#CF142B" stroke-width="1.2" />
+                            <path d="M8 0V16M0 8H16" stroke="white" stroke-width="3" />
+                            <path d="M8 0V16M0 8H16" stroke="#CF142B" stroke-width="2" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -57,6 +70,39 @@ const navbarHTML = `
             <a href="product.html" class="hover:text-red-600 transition">Product</a>
             <a href="facilities.html" class="hover:text-red-600 transition">Facilities</a>
             <a href="contact.html" class="hover:text-red-600 transition">Contact Us</a>
+
+            <div id="lang-container" class="flex items-center gap-2">
+                <button data-lang="id" class="lang-btn rounded-[2rem] py-1 text-sm border-0 text-blue-900 transition-all duration-200 flex items-center gap-2">
+                    <span>ID</span>
+                    <svg class="lang-flag hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <g clip-path="url(#clip_id)">
+                            <path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" fill="#F0F0F0"></path>
+                            <path d="M0 8.00003C0 3.58175 3.58175 0 8 0C12.4183 0 16 3.58175 16 8.00003" fill="#D80027"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip_id">
+                                <rect width="16" height="16" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+
+                <button data-lang="en" class="lang-btn active-lang rounded-[2rem] py-1 text-sm border border-blue-900 text-blue-900 transition-all duration-200 flex items-center gap-2 pl-3 pr-2 md:pr-3 md:pl-4">
+                    <span class="font-bold">EN</span>
+                    <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <mask id="mask_circle" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+                            <circle cx="8" cy="8" r="8" fill="white" />
+                        </mask>
+                        <g mask="url(#mask_circle)">
+                            <path d="M0 0H16V16H0V0Z" fill="#00247D" />
+                            <path d="M16 0L0 16M0 0L16 16" stroke="white" stroke-width="2" />
+                            <path d="M16 0L0 16M0 0L16 16" stroke="#CF142B" stroke-width="1.2" />
+                            <path d="M8 0V16M0 8H16" stroke="white" stroke-width="3" />
+                            <path d="M8 0V16M0 8H16" stroke="#CF142B" stroke-width="2" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </nav>`;
@@ -69,7 +115,7 @@ let translations = {};
 function updateLanguage(lang) {
     console.log("--- updateLanguage Called ---");
     console.log("Target Language:", lang);
-    
+
     if (!translations[lang]) {
         console.error("ERROR: Translation data for '" + lang + "' is missing!", translations);
         return;
@@ -81,7 +127,7 @@ function updateLanguage(lang) {
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
         const translatedText = translations[lang][key];
-        
+
         if (translatedText) {
             console.log("Translating [" + key + "] -> " + translatedText);
             el.textContent = translatedText;
@@ -121,7 +167,7 @@ fetch('json/translations.json')
         const savedLang = localStorage.getItem('preferredLang') || 'en';
         console.log("Initial Language to load:", savedLang);
         updateLanguage(savedLang);
-        
+
         const targetBtn = document.querySelector(`[data-lang="${savedLang}"]`);
         if (targetBtn) {
             updateButtonUI(targetBtn);
@@ -163,8 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.classList.contains('max-h-96') ? closeMenu() : openMenu();
     });
 
-    window.addEventListener('click', (e) => { 
-        if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu(); 
+    window.addEventListener('click', (e) => {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
     });
 
     // Language Button Click Listeners
@@ -174,22 +220,30 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("User clicked language button:", selectedLang);
             updateButtonUI(button);
             updateLanguage(selectedLang);
-            window.dispatchEvent(new Event('scroll')); 
+            window.dispatchEvent(new Event('scroll'));
         });
     });
 
     // Theme Observer Logic
     const applyStyles = (mainColor, oldMain, karyaColor, oldKarya, borderColor) => {
-        logoTexts.forEach(el => { el.classList.add(mainColor); el.classList.remove(oldMain); });
+        logoTexts.forEach(el => {
+            el.classList.add(mainColor);
+            el.classList.remove(oldMain);
+        });
         navLinks.forEach(link => {
             if (!link.classList.contains('text-yellow-500')) {
-                link.classList.add(mainColor); link.classList.remove(oldMain);
+                link.classList.add(mainColor);
+                link.classList.remove(oldMain);
             }
         });
-        if (karyaText) { karyaText.classList.add(karyaColor); karyaText.classList.remove(oldKarya); }
-        
+        if (karyaText) {
+            karyaText.classList.add(karyaColor);
+            karyaText.classList.remove(oldKarya);
+        }
+
         langBtns.forEach(b => {
-            b.classList.add(mainColor); b.classList.remove(oldMain);
+            b.classList.add(mainColor);
+            b.classList.remove(oldMain);
             if (b.classList.contains('active-lang')) {
                 b.classList.remove('border-white', 'border-blue-900');
                 b.classList.add(borderColor);
@@ -203,14 +257,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const theme = entry.target.getAttribute('data-theme');
                 if (theme === 'dark') {
                     applyStyles('text-white', 'text-blue-900', 'text-white', 'text-red-600', 'border-white');
-                    if(logoImg) logoImg.src = 'logonkp-white.svg';
+                    if (logoImg) logoImg.src = 'logonkp-white.svg';
                 } else {
                     applyStyles('text-blue-900', 'text-white', 'text-red-600', 'text-white', 'border-blue-900');
-                    if(logoImg) logoImg.src = 'logonkp-color.svg';
+                    if (logoImg) logoImg.src = 'logonkp-color.svg';
                 }
             }
         });
-    }, { rootMargin: '0px 0px -90% 0px' });
+    }, {
+        rootMargin: '0px 0px -90% 0px'
+    });
 
     document.querySelectorAll('section').forEach(section => observer.observe(section));
 
